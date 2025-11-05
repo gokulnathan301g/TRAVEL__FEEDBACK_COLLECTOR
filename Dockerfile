@@ -5,11 +5,11 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copy pom.xml and download dependencies (cache step)
-COPY AnswerSaverApp/backend/pom.xml .
+COPY backend/pom.xml .
 RUN mvn dependency:go-offline
 
 # Copy source code
-COPY AnswerSaverApp/backend/src ./src
+COPY backend/src ./src
 
 # Build the app
 RUN mvn clean package -DskipTests
