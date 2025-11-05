@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: traval-backend
+    env: java
+    buildCommand: cd backend && mvn clean package -DskipTests
+    startCommand: cd backend && java -jar target/*.jar
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: traval-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: traval-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: traval-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: traval-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: traval-db
+          property: password
+
+databases:
+  - name: traval-db
+    databaseName: traval
+    user: traval_user
