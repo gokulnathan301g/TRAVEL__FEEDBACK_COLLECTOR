@@ -27,3 +27,4 @@ EXPOSE 8080
 
 # Run the app
 ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]
+# Force rebuild
